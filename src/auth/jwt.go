@@ -11,9 +11,7 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-func generateJwt() (string, time.Time, error) {
-	expirationTime := time.Now().Add(time.Duration(env.GetLoginTime()))
-
+func generateJwt(expirationTime time.Time) (string, error) {
 	claims := &Claims{
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
@@ -22,7 +20,7 @@ func generateJwt() (string, time.Time, error) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString(env.GetSecret())
-	return tokenString, expirationTime, err
+	return tokenString, err
 }
 
 func validateJwt(tknStr string) bool {
