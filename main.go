@@ -9,10 +9,14 @@ import (
 )
 
 func main() {
+	// Validate that variables are present
 	env.GetPassword()
 	env.GetLoginTime()
+	env.GetServiceAddress()
+	// Generate secret for JWT
 	env.GenerateSecret()
 
+	// Set default port
 	port := "4000"
 	http.HandleFunc("/", proxy.HandleRequest)
 

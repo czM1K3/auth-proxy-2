@@ -24,3 +24,12 @@ func GetLoginTime() int {
 	}
 	return time
 }
+
+func GetServiceAddress() string {
+	serviceAddress := os.Getenv("SERVICE_ADDRESS")
+	if serviceAddress == "" {
+		log.Fatalln("SERVICE_ADDRESS is required")
+		os.Exit(1)
+	}
+	return serviceAddress
+}
