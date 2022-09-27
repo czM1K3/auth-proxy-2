@@ -11,6 +11,7 @@ import (
 func main() {
 	env.GetPassword()
 	env.GetLoginTime()
+	env.GenerateSecret()
 
 	port := "4000"
 	http.HandleFunc("/", proxy.HandleRequest)

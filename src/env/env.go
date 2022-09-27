@@ -24,11 +24,3 @@ func GetLoginTime() int {
 	}
 	return time
 }
-
-func GetSecret() []byte {
-	secret := os.Getenv("SECRET")
-	if secret == "" {
-		return []byte("secret")
-	}
-	return []byte(secret)
-}
