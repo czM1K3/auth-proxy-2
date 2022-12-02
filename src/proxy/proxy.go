@@ -20,7 +20,7 @@ func HandleRequest(res http.ResponseWriter, req *http.Request) {
 		serveReverseProxy(res, req)
 	} else {
 		// Check if is on login page
-		if strings.Contains(req.URL.Path, loginUrl) {
+		if strings.HasSuffix(req.URL.Path, loginUrl) {
 			// If so, check for request method
 			if req.Method == "POST" {
 				// If POST, try to login
